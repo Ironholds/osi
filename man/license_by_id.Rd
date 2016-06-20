@@ -8,7 +8,7 @@ license_by_id(license_ids, ...)
 }
 \arguments{
 \item{license_ids}{the ID (or IDs! It's vectorised!) to retrieve metadata for.
-IDs can be extracted from existing data with \code{\link{extract_ids}}.}
+IDs can be extracted from existing data with \code{\link{extract_id}}.}
 
 \item{...}{arguments to pass to httr's GET.}
 }
@@ -27,8 +27,8 @@ gpl_2_metadata <- license_by_id("GPL-2.0")
 }
 \seealso{
 \code{\link{license_text}}, which can consume the results of this
-function, and \code{\link{extract_ids}}, to retrieve the IDs, as well as
-\code{\link{license_by_keyword}} and \code{\link{license_by_scheme}} for alternate
-ways of looking up particular licenses.
+function, and \code{\link{extract_id}}, to retrieve the IDs, as well as
+\code{\link{license_by_keyword}} for an alternate
+way of looking up particular licenses.
 }
 

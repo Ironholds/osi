@@ -22,7 +22,7 @@ license_list <- function(...){
 #'all the metadata associated with OSI-listed licenses that contain
 #'a particular, user-provided keyword.
 #'
-#'@param keyword. Acceptable keywords are:
+#'@param keyword The keyword to search for. Acceptable keywords are:
 #'\itemize{
 #'  \item{osi-approved}{ This license has been OSI Approved.}
 #'  \item{redundant}{	This license is redundant with a more widely used license.}
@@ -48,8 +48,8 @@ license_list <- function(...){
 #'
 #'@seealso \code{\link{license_text}}, which can consume the results of this
 #'function, as well as
-#'\code{\link{license_by_id}} and \code{\link{license_by_scheme}} for alternate
-#'ways of looking up particular licenses.
+#'\code{\link{license_by_id}} for an alternate
+#'way of looking up particular licenses.
 #'
 #'@export
 license_by_keyword <- function(keyword, ...){
@@ -61,7 +61,7 @@ license_by_keyword <- function(keyword, ...){
 #'with particular license IDs.
 #'
 #'@param license_ids the ID (or IDs! It's vectorised!) to retrieve metadata for.
-#'IDs can be extracted from existing data with \code{\link{extract_ids}}.
+#'IDs can be extracted from existing data with \code{\link{extract_id}}.
 #'
 #'@param ... arguments to pass to httr's GET.
 #'
@@ -73,9 +73,9 @@ license_by_keyword <- function(keyword, ...){
 #'gpl_2_metadata <- license_by_id("GPL-2.0")
 #'
 #'@seealso \code{\link{license_text}}, which can consume the results of this
-#'function, and \code{\link{extract_ids}}, to retrieve the IDs, as well as
-#'\code{\link{license_by_keyword}} and \code{\link{license_by_scheme}} for alternate
-#'ways of looking up particular licenses.
+#'function, and \code{\link{extract_id}}, to retrieve the IDs, as well as
+#'\code{\link{license_by_keyword}} for an alternate
+#'way of looking up particular licenses.
 #'
 #'@export
 license_by_id <- function(license_ids, ...){

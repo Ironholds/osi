@@ -7,9 +7,7 @@
 license_by_keyword(keyword, ...)
 }
 \arguments{
-\item{...}{arguments to pass to httr's GET.}
-
-\item{keyword.}{Acceptable keywords are:
+\item{keyword}{The keyword to search for. Acceptable keywords are:
 \itemize{
  \item{osi-approved}{ This license has been OSI Approved.}
  \item{redundant}{    This license is redundant with a more widely used license.}
@@ -23,6 +21,8 @@ license_by_keyword(keyword, ...)
  \item{special-purpose}{ This license suits a very special purpose.}
  \item{retired}{ This license has been retired by the issuer.}
 }}
+
+\item{...}{arguments to pass to httr's GET.}
 }
 \value{
 a list of licenses and their metadata (themselves in the form of
@@ -41,7 +41,7 @@ copyleft_licenses <- license_by_keyword("copyleft")
 \seealso{
 \code{\link{license_text}}, which can consume the results of this
 function, as well as
-\code{\link{license_by_id}} and \code{\link{license_by_scheme}} for alternate
-ways of looking up particular licenses.
+\code{\link{license_by_id}} for an alternate
+way of looking up particular licenses.
 }
 
