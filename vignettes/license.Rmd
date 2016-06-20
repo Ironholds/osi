@@ -1,0 +1,53 @@
+---
+title: "Getting license information with the osi package"
+author: "Oliver Keyes"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting license information with the osi package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Retrieving License Information With osi
+
+Copyright licenses (or copyleft licenses!) are a core part of how the internet functions - they're what allows us to reuse, modify and inspect code, including the R programming language.
+
+The folks at the [Open Source Initiative](https://opensource.org/) have built [an API](https://github.com/OpenSourceOrg/api) containing the metadata about every copyright license they track,
+including keywords associated with it, its approval status, whether it's been superseded, and various pointers to places where the actual license content can be obtained. This R package acts as a connector to that API and provides a few other goodies.
+
+### Getting license metadata
+
+The core of the package is retrieving metadata about all the licenses the OSI lists. This can be done in one of three ways. The broadest is `license_list()`; this gets *all* the OSI licenses (90 as of writing) and their associated metadata.
+
+For a more precise filter you can look at `license_by_keyword()`, which just retrieves the licenses with certain keywords in their metadata - the full list of supported keywords can be seen on the help page for that function.
+
+Finally, if you already have the ID of a license ("GPL-2.0", say) you can use `license_by_id()` to get just that license's metadata. It's fully vectorised, so plugging in multiple IDs is completely fine.
+
+Once you've got your metadata, we move on to...
+
+### Extracting components
+
+Extract things out of it! License metadata is a complex thing, and comes back from the API as a list. While some effort is made to tidy it up, it's always going to be some amount of jumbled just because it's representing a lot of different concepts within it.
+
+To partially ameliorate this and provide some convenience, the `osi` package contains various functions designed to extract specific components from a whole set of licenses' metadata, including:
+
+1. The license ID, with `extract_id()`;
+2. The license name, with `extract_name()`;
+3. What the license was superseded by (an `NA` if it hasn't been), with `extract_superseded()`, and;
+4. Any keywords associated with each license, with `extract_keywords()`
+
+All these functions are fully documented; if you see more you'd like, head on down to the 'Feedback' section below.
+
+### Getting license text
+
+One thing the OSI API doesn't have is the actual *text* of each license, which is obviously fairly useful to have to hand (we're talking about legal questions, after all). Luckily what it does have, a lot of the time, is pointers to where the plaintext
+content of the license lives, and we can use the metadata to go and grab it.
+
+The `license_text()` function lets you do just that; if you give it metadata from the OSI API, it goes through grabbing the plain text version of each license wherever possible, producing a data.frame of three columns - license ID, the location of the plain text version, and the actual text itself. In the event it can't retrieve a license's text (because no link to it was available), it just provides an NA instead. Again, this is fully vectorised and can be used over a whole set of metadata from a whole set of licenses.
+
+### Feedback
+
+If you have ideas for other things you'd like to see that would make playing with this data easier (or, heck, even other features for the API, I can pass them up the chain) the best approach
+is to either [request it](https://github.com/Ironholds/osi/issues) or [add it](https://github.com/Ironholds/osi/pulls)!
+
