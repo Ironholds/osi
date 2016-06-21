@@ -12,7 +12,7 @@ __Status:__ Stable
 2. Extracting values from said metadata;
 3. Retrieving the actual plaintext versions of licenses covered by the API.
 
-For more information, see the accompanying vignette! 
+For more information, see the [accompanying vignette](https://cran.r-project.org/web/packages/osi/vignettes/license.html)! 
 
 Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
 
